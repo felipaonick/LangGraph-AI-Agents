@@ -1,0 +1,15 @@
+STATE CONFLICT
+
+L'esecuzione asincrona presenta alcune problematiche.
+Una di queste è lo STATE CONFLICT.
+I nodi che modificano lo stesso attributo nello STATO potrebbero sovrascrivere
+le modifiche fatte dagli altri nodi.
+Questo ci porta a risultati inconsistenti ed inaspettati e potenzialmente
+può condurre ad inconsistenza dei dati.
+
+La pratica migliore per la esecuzione asincrona di nodi è isolare
+l'aggiornamento dello STATO.
+
+Per tanto, ciascun nodo deve scrivere in un attributo diverso dello STATO
+per evitare tali conflitti. Questa pratica ci aiuta a mantenere la integrità
+dei dati ed evita sovrascritture inintenzionali dei valori degli attributi dello STATO.

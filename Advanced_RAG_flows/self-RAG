@@ -1,0 +1,23 @@
+implementiamo il self-RAG
+
+Basicamente significa che si va a riflettere sulla risposta data dal modello.
+
+Quindi prendiamo la generazione ed andiamo a compararla con i documenti, ed andiamo a vedere se il modello ha allucinato oppure no.
+
+Quindi dobbiamo verificare se la risposta è realmente basata sui documenti.
+
+Se il modello non ha avuto allucinazioni allora va bene e si va al secondo step che è riflettere sulla riposta.
+Ora però vogliamo riflettere e vedere se la risposta risponde alla domanda fatta dall'utente all'inizio.
+Se la risposta data dal modello risponde effettivamente alla domanda dell'utente allora possiamo fornire la risposta all'utente.
+
+Se la risposta non risponde alla domanda iniziale dell'utente allora dobbiamo fare una ricerca sul web poiché non abbiamo incontrato informazioni rilevanti nel VectorStore
+
+
+Se invece il modello ha avuto allucinazioni e quindi la risposta non è basata sui documenti aziendali, allora dobbiamo rigenerarla di nuovo per far si che sia basata sui documenti aziendali.
+
+
+Per fare ciò aggiungiamo semplicemente un arco condizionale che esce dal generate node.
+
+Dopo aner generato per andare fino al nodo finale andiamo ad aggiungere un'altro livello di riflessione.
+
+

@@ -1,0 +1,57 @@
+Memory
+
+La persistenza è una caratteristica cruciale per qualsiasi applicazione
+di livello di produzione.
+
+La persistenza in LangGraph significa che possiamo memorizzare il nostro stato dopo che i nostri nodi si eseguono, in dato tempo,
+in una memoria persistente che è recuperabile, che quindi possiamo recuperarlo dopo molteplici esecuzioni o interruzioni.
+
+Perché è così importante?
+
+1.
+In primo luogo, facilita gli human-in-the-loop workflows.
+La cosa più probabile è che la nostra applicazione sia user-oriented e che quindi otteniamo l'input dall'user.
+
+In questo caso potrebbe esserci un nodo che va a dipendere dall'input dell'user.
+
+Quindi quello che LangGraph ci offre è una maniera molto conveniente di stoppare l'esecuzione del nostro grafo e langGraph è il framework
+che va a comprovare lo stato di memorizzazione persistente.
+
+Quindi possiamo andare a prendere l'input dell'user.
+
+E possiamo ritornare all'esecuzione del grafo dal punto in cui lo abbiamo lasciato con l'input dell'user.
+
+Questo è molto utile e non lo avremmo potuto fare senza la persistenza.
+
+
+2.
+Un'altro motivo del perché la memoria e la persistenza è importante è che ci permette il debugging e per la history della chat.
+
+Se inoltre vogliamo avere sessioni multiple di un user.
+
+
+CHECKPOINTER
+
+è un persistence layer che langgraph implementa per noi.
+
+In sostanza quello che faremo è memorizzare lo stato in una memoria persistente.
+
+Sappiamo che langchain ha molte integrazioni con basi di dati.
+
+Se si tratta di basi di dati di documenti come Firestore o MongoDB o se si tratta di basi di dati relazionali come Postgres, SQLite, MySQL o incluso basi dati a grafo come Neo4j o AWS Neptune.
+
+Qui ci concentreremo nella persistenza del nostro stato in una base di dati SQLite.
+
+
+Se creiamo un grafo e al crearlo gli passiamo anche il CHECKPOINTER allora langgraph, sotto il cofano, va a memorizzare
+il nostro stato dopo l'esecuzione di ogni nodo.
+
+Quindi in sostanza dopo l'esecuzione di nodi abbiamo un nuovo stato che langgraph va a memorizzare nella nostra base di dati e che possiamo accedervi più tardi se vogliamo.
+
+Questo ci da l'opzione di arrestare l'esecuzione del grafo poiché abbiamo memorizzato lo stato prima dell'arresto.
+
+arrestiamo il grafo per fare qualcosa come ottenere un'input dell'utente e poi continuare esattamente da dove ci siamo fermati poiché abbiamo lo stato del grafo nel momento di stop nella nostra base di dati e possiamo recuperarlo.
+
+Questo è in sostanza quello fa un CHECKPOINTER quando lo colleghiamo al nostro grafo
+
+

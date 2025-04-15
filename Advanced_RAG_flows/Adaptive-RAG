@@ -1,0 +1,23 @@
+Adaptive_RAG
+
+Usiamo un instradatore di domande per instradare la nostra domanda a diversi flussi
+
+Utilizzeremo du diversi flussi RAG.
+
+Il primo è prendere la rotta di ricerca su internet e poi seguire il flusso con la stessa logica di prima.
+
+Il secondo flusso è utilizzare il retriever del nostro vector store per poi seguire il flusso normale come prima.
+
+
+Quindi prendiamo la domanda dell'utente ed andiamo a dire se l'informazione è memorizzata nel vectorstore per rispondere a tale domanda.
+E se non lo è prendiamo la rotta della ricerca web e risponderemo alla domanda con i Document recuperati a partire dalla ricerca.
+
+
+Dunque ciò che andiamo a fare è implementare una chain di instradamento delle domande, che prenderà la domanda e deciderà se instradarla nella ricerca web o al nodo retriever.
+
+Dopodiché integriamo questa chain nel grafo utilizzando il set_conditional_entrypoint (cioè come primo nodo del grafo con archi condizionali)
+
+
+
+
+
